@@ -12,21 +12,6 @@ def addTwirlingGates(cir, twirlingGateSet):
         twirlCir[iTwirl] = cir[i]
     return twirlCir
 
-def fixTwirlingDagger(cirTwirl):
-    depth = len(cirTwirl)
-    width = len(cirTwirl[0])
-    idx = int(depth / 3)
-    for i in range(idx):
-        daggerIdx = 2 + 3 * i
-        for w in range(width):
-            cirTwirl[daggerIdx][w] =
-    cirTwirl
-
-def stabilize(p1, p2):
-    if p1 == 'I':
-        return p1
-    elif p1 == 'X':
-        return p1
 
 
 
