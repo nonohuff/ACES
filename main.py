@@ -16,5 +16,7 @@ circuit = generateCliffordCircuit(width, depth, singleGateSet, doubleGateSet)
 qiskitCircuit = transpileListToQiskitCircuit(circuit)
 print(circuit)
 print(qiskitCircuit)
+for op in qiskitCircuit.data:
+    print(op.operation.name)
 
 
