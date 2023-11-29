@@ -13,12 +13,14 @@ def transpileListToQiskitCircuit(cir):
             for w in range(width):
                 singleGate = cir[d][w]
                 stringToQiskitSingleGate(singleGate, qiskitCir, w)
-            qiskitCir.barrier()
+            if d != width - 1:
+                qiskitCir.barrier()
         else:
             c = cir[d].index('CNOT_C')
             t = cir[d].index('CNOT_T')
             qiskitCir.cx(c, t)
-            qiskitCir.barrier()
+            if d != width - 1:
+                qiskitCir.barrier()
     return qiskitCir
 
 def stringToQiskitSingleGate(gateString, qiskitCir, whichQubit):
