@@ -2,7 +2,7 @@ from generator import generateCliffordCircuit
 from calculator import addTwirlingGates
 from execution.transpiler import transpileListToQiskitCircuit
 
-width = 3 # num_qubits
+width = 4 # num_qubits
 depth = 3 # number of layers in the circuit (easy + hard)
 singleGateSet = ['X', 'H', 'Z', 'I', 'S']
 doubleGateSet = ['CNOT_C', 'CNOT_T']
