@@ -1,0 +1,45 @@
+# This is your source file. You'll need a main.qhe file for us to compile your code.
+include constants.qh
+
+increment num_qubit to max_num_qubits
+    qubit -> circuit.[num_qubit]
+next
+
+# h, s, cnot, x, y, z
+# 0, 1, 2, 3, 4, 5
+
+increment incrmt to total
+    incrmt mod 3 == 1 -> storage
+    if storage
+        cur_qubit = circuit.[inputlist.[incrmt+2]]
+        control_qubit = circuit.[inputlist.[incrmt+1]]
+        inputlist.[incrmt] == 0 -> temp0
+        inputlist.[incrmt] == 1 -> temp1
+        inputlist.[incrmt] == 2 -> temp2
+        inputlist.[incrmt] == 3 -> temp3
+        inputlist.[incrmt] == 4 -> temp4
+        inputlist.[incrmt] == 5 -> temp5
+        if temp0
+            h[cur_qubit]
+        end
+        if temp1
+            s[cur_qubit]
+        end
+        if temp2
+            cnot[circuit.[control_qubit], circuit.[cur_qubit]]
+        end
+        if temp3
+            x[cur_qubit]
+        end
+        if temp4
+            y[cur_qubit]
+        end
+        if temp5
+            z[cur_qubit]
+        end
+    end
+next
+
+increment num_qubit to max_num_qubits
+    measure[circuit.[num_qubit]] -> readout.[num_qubit]
+next

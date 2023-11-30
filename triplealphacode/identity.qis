@@ -1,0 +1,6 @@
+identity {
+    dim_in: 2
+    dim_out: 2
+
+    kraus: [1 0; 0 1]
+}
