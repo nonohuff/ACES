@@ -8,7 +8,7 @@ def transpileListToQiskitCircuit(cir):
     depth = len(cir)
     width = len(cir[0])
     qiskitCir = QuantumCircuit(width)
-    for d in range(width):
+    for d in range(depth):
         if d % 2 == 0:
             for w in range(width):
                 singleGate = cir[d][w]
