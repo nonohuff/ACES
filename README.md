@@ -4,21 +4,20 @@ Through this project, we attempted to implement the method for scalable noise me
 
 ##### General Problem:
 
-The error rates of a general Pauli channel can be reinterpreted by examining the error rates of the Pauli-twirl of that channel.
+Estimating incoherent errors/noise in a quantum circuit is a fundamental problem in the design of optimal codes, decoders and circuits for fault tolerant quantum computation.  It is already known that individually the error rates of a Pauli channel can be estimated efficiently. ACES can simulataneously estimate a large collection of Pauli noise channels associated with a quantum circuit. The general technique revolves around that the error rates of a general Pauli channel can be reinterpreted by examining the error rates of the Pauli-twirl of that channel.
 
 ##### Method:
 
 1) Generate a random noisy circuit.
-- ```generateCliffordCircuit```: generate a random Clifford circuit with single and double qubit gates. This function takes the single and double qubit Clifford gate sets as the input. Then it randomly generate a list of strings corresponding to the circuit.
-For example, randomly generate a Clifford circuit list: ```[['X', 'S', 'X', 'X'], ['I', 'I', 'CNOT_T', 'CNOT_C'], ['S', 'I', 'S', 'H']]```.
 
-- ```transpileListToQiskitCircuit```: transpile a list of strings to the ```qiskit``` circuit with single and double qubit gates layer by layer.
-As the example above, transpile the list into a quantum circuit using ```qiskit```.
-![original](image/README/originalCircuit.png)
- 
-- ```makeNoisyGates```: randomly generate the Pauli gates as noise between each two layers.
-As the example above, add the noisy gates, the circuit becomes:
-![noisy](image/README/noisyCircuit.png)
+- ``generateCliffordCircuit``: generate a random Clifford circuit with single and double qubit gates. This function takes the single and double qubit Clifford gate sets as the input. Then it randomly generate a list of strings corresponding to the circuit.
+  For example, randomly generate a Clifford circuit list: ``[['X', 'S', 'X', 'X'], ['I', 'I', 'CNOT_T', 'CNOT_C'], ['S', 'I', 'S', 'H']]``.
+- ``transpileListToQiskitCircuit``: transpile a list of strings to the ``qiskit`` circuit with single and double qubit gates layer by layer.
+  As the example above, transpile the list into a quantum circuit using ``qiskit``.
+  ![original](image/README/originalCircuit.png)
+- ``makeNoisyGates``: randomly generate the Pauli gates as noise between each two layers.
+  As the example above, add the noisy gates, the circuit becomes:
+  ![noisy](image/README/noisyCircuit.png)
 
 2) Twirl the generated circuit: We take the following inputted quantum circuit, and output the next quantum circuit that includes the Pauli Twirling gates.
 
