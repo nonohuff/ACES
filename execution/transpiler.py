@@ -16,7 +16,9 @@ def transpileListToQiskitCircuit(cir, noise=False, px=0, py=0, pz=0):
             for w in range(width):
                 singleGate = cir[d][w]
                 stringToQiskitSingleGate(singleGate, qiskitCir, w)
-                if noise:
+            if noise:
+                qiskitCir.barrier()
+                for w in range(width):
                     makeNoisyGates(qiskitCir, [w], px, py, pz)
             if d != width - 1:
                 qiskitCir.barrier()
@@ -25,6 +27,7 @@ def transpileListToQiskitCircuit(cir, noise=False, px=0, py=0, pz=0):
             t = cir[d].index('CNOT_T')
             qiskitCir.cx(c, t)
             if noise:
+                qiskitCir.barrier()
                 makeNoisyGates(qiskitCir, [c, t], px, py, pz)
             if d != width - 1:
                 qiskitCir.barrier()
