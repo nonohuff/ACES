@@ -9,7 +9,17 @@ The error rates of a general Pauli channel can be reinterpreted by examining the
 ##### Method:
 
 1) Generate a random noisy circuit.
-   ``generateCliffordCircuit``: generate a random Clifford circuit with single and double qubit gates. This function takes the single and double qubit Clifford gate sets as the input. Then it randomly generate a ``qiskit`` circuit with single and double qubit gates layer by layer.
+- ```generateCliffordCircuit```: generate a random Clifford circuit with single and double qubit gates. This function takes the single and double qubit Clifford gate sets as the input. Then it randomly generate a list of strings corresponding to the circuit.
+For example, randomly generate a Clifford circuit list: ```[['X', 'S', 'X', 'X'], ['I', 'I', 'CNOT_T', 'CNOT_C'], ['S', 'I', 'S', 'H']]```.
+
+- ```transpileListToQiskitCircuit```: transpile a list of strings to the ```qiskit``` circuit with single and double qubit gates layer by layer.
+As the example above, transpile the list into a quantum circuit using ```qiskit```.
+![original](image/README/originalCircuit.png)
+ 
+- ```makeNoisyGates```: randomly generate the Pauli gates as noise between each two layers.
+As the example above, add the noisy gates, the circuit becomes:
+![noisy](image/README/noisyCircuit.png)
+
 2) Twirl the generated circuit: We take the following inputted quantum circuit, and output the next quantum circuit that includes the Pauli Twirling gates.
 
    <img src="image/README/1701407869598.png" alt="drawing" style="width:250px;"/>
