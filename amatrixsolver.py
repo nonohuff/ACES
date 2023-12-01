@@ -4,6 +4,8 @@ def Amatrixsolve(Amatrix,Lambda):
     'Amatrix: numpy 2D array'
     'Lmabda: numpy 1D array'
 
+    Lambda = np.abs(Lambda)
+
     if (np.linalg.matrix_rank(Amatrix) != Amatrix.shape[0]):
         raise ValueError('Amatrix is not of full rank')
     if (0 in Lambda):

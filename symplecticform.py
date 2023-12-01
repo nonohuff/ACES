@@ -21,7 +21,7 @@ def sympleticform(operator_a,operator_b):
             return -1
         else:
             return 1
-    elif(operator_b == 'Z'):
+    elif(operator_a == 'Z'):
         if(operator_b == 'X'):
             return -1
         elif(operator_b == 'Y'):
