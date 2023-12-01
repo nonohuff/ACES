@@ -1,5 +1,6 @@
 from numpy import random
-
+from qiskit_aer import AerSimulator
+from qiskit import transpile
 
 
 def makeNoisyGates(qiskitCir, whichQubits, px=0, py=0, pz=0):
@@ -64,6 +65,12 @@ def makeNoisyGates(qiskitCir, whichQubits, px=0, py=0, pz=0):
 
 
 
+def simulateAer(qiskitCir, shots=1024):
+# Initialize Aer simulator backend
+    AerSim = AerSimulator()
+    qiskitCirTranspile = transpile(qiskitCir, AerSim)
+    result = AerSim.run(qiskitCirTranspile, shots=shots).result()
+    return result
 
 
 
