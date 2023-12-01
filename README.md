@@ -18,9 +18,10 @@ The error rates of a general Pauli channel can be reinterpreted by examining the
 ##### Current Bugs:
 
 1) Error Probability Discovery: For simplicity, we previously unincluded the identity transform in our single qubit operations, later realizing that in order to incorporate the hadamard transform, we do require it in the Single Gate input set. Hence a simple solution to solving the error probability bug is to include the Identity gate, and then accordingly update the params_list to include the Identity gate as well. We reccomend future for rectifcation of this bug is defining a consistent mapping or reference from tuples of clifford gates and pauli errors to some index. We believe that a slight change in convention with how this mapping is done is the source of the error in the final conversion from the Pauli eigenvalues to the associated Pauli errors of the general channel of interest.
-2) a
+2) 
 
 ##### Integration with Horizon Quantum Computing:
 
-1) Deployment on AWS Quantum Simulator:
-2) Deployment on IonQ Quantum Computer:
+1) Built QPU script: We've developed a method of delivering the relevant QASM circuit object from python into HQC's compiler via the API. We have developed a test for this implementation and successfully compiled from the current highest layer, Helium, which is similar to C, down to the gate level language, Hydrogen, then generated the relevant API. Note: the max_num_qubits and total are not dynamic variables.
+2) Deployment on AWS Quantum Simulator: We'd tested the API via Postman, and currently can query the task successfully. On the AWS side, the current script fails and we believe this is due to the indexing of how we're assigning qubits. To reproduce this error, the final 3 gates in the current code, will produce an X-gate on the same qubit, incorrectly.
+3) Deployment on IonQ Quantum Computer: Notably, due to the nature of error characterization, the specific quantum hardware that this is deployed on can drastically impact the usefulness and output of the algorithm proposed. In a semi-conducting qubit setting, the ACES protocol is particularly helpful due to the spatial specificity of the error characterization at the gate level. For other quantum hardware regimes, gate level error characterization can help towards the development of fault-tolerant algorithms in error mitigation.
