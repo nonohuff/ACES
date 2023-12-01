@@ -9,6 +9,8 @@ The error rates of a general Pauli channel can be reinterpreted by examining the
 ##### Method: 
 
 1) Generate a random noisy circuit.
+```generateCliffordCircuit```: generate a random Clifford circuit with single and double qubit gates. This function takes the single and double qubit Clifford gate sets as the input. Then it randomly generate a ```qiskit``` circuit with single and double qubit gates layer by layer.
+![img.png](img.png)
 2) Generate the "A" matrix: To continue, we build a matrix A, constructed to build to full rank. Each row in matrix A represents in independent sampling of the quauntum circuit, meant to capture the frequency of errors for each operation on each Pauli input. We solve the following equation to fully describe the linear system of the circuit.
 
    ![1701406425173](image/README/1701406425173.png)

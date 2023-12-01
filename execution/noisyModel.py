@@ -37,34 +37,6 @@ def makeNoisyGates(qiskitCir, whichQubits, px=0, py=0, pz=0):
     return qiskitCir
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def simulateAer(qiskitCir, shots=1024):
 # Initialize Aer simulator backend
     AerSim = AerSimulator()
