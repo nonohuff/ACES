@@ -23,7 +23,6 @@ The error rates of a general Pauli channel can be reinterpreted by examining the
 ##### Current Bugs:
 
 1) Error Probability Discovery: For simplicity, we previously unincluded the identity transform in our single qubit operations, later realizing that in order to incorporate the hadamard transform, we do require it in the Single Gate input set. Hence a simple solution to solving the error probability bug is to include the Identity gate, and then accordingly update the params_list to include the Identity gate as well. We reccomend future for rectifcation of this bug is defining a consistent mapping or reference from tuples of clifford gates and pauli errors to some index. We believe that a slight change in convention with how this mapping is done is the source of the error in the final conversion from the Pauli eigenvalues to the associated Pauli errors of the general channel of interest.
-2) 
 
 ##### Integration with Horizon Quantum Computing:
 
