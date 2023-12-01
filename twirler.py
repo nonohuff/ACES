@@ -45,8 +45,3 @@ def GTwirling(circuit):
         if index != len(list(split_circuit_by_barrier(circuit)))-1:
             new_circuit.barrier()
     return new_circuit
-
-
-
-
-

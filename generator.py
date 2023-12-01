@@ -24,13 +24,3 @@ def generateCliffordCircuit(width, depth, singleGateSet, doubleGateSet):
             randTarget = random.choice(randQubits)
             cir[d][randTarget] = t
     return cir
-
-
-
-
-
-
-
-
-
-

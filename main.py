@@ -1,10 +1,14 @@
 from generator import generateCliffordCircuit
 from execution.transpiler import transpileListToQiskitCircuit
 from twirler import GTwirling
+from generate_A import generate_A
+
+import numpy as np
+import qiskit as qk
 
 width = 4  # num_qubits
 depth = 3  # number of layers in the circuit (easy + hard)
-singleGateSet = ['X', 'H', 'Z', 'I', 'S']
+singleGateSet = ['X', 'H', 'Z', 'S']
 # singleGateSet = ['X']
 
 doubleGateSet = ['CNOT_C', 'CNOT_T']
@@ -22,10 +26,10 @@ circuit = generateCliffordCircuit(width, depth, singleGateSet, doubleGateSet)
 # circuitTwirl = addTwirlingGates(circuit, twirlingGateSet)
 # # Fix up the Clifford dagger operator to make the unitaries unchanged.
 qiskitCircuit =transpileListToQiskitCircuit(circuit)
-print(qiskitCircuit)
+# print(qiskitCircuit)
 qiskitCircuitNoisy = transpileListToQiskitCircuit(circuit, noise=True, px=px, py=py, pz=pz)
 # print(circuit)
-print(qiskitCircuitNoisy)
+# print(qiskitCircuitNoisy)
 # for op in qiskitCircuit.data:
 #     print(op.operation.name)
 qiskitCircuitTwirl = GTwirling(qiskitCircuit)
