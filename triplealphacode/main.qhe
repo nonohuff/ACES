@@ -1,18 +1,60 @@
-# This is your source file. You'll need a main.qhe file for us to compile your code.
-include constants.qh
+5 -> max_num_qubits
+15 -> max_layers # max depth of circuit (odd = ending in easy, even = ending in hard/cnot)
 
-increment num_qubit to max_num_qubits
+# total number of operations = pauli twirl multiplier (3) * num of qubits * layers
+
+
+#3 * 3 * max_num_qubits * max_layers -> total
+675 -> total
+
+0 -> inputlist.[1]
+6 -> inputlist.[2]
+1 -> inputlist.[3]
+1 -> inputlist.[4]
+6 -> inputlist.[5]
+2 -> inputlist.[6]
+3 -> inputlist.[7]
+1 -> inputlist.[8]
+2 -> inputlist.[9]
+6 -> inputlist.[10]
+6 -> inputlist.[11]
+2 -> inputlist.[12]
+1 -> inputlist.[13]
+6 -> inputlist.[14]
+1 -> inputlist.[15]
+6 -> inputlist.[16]
+6 -> inputlist.[17]
+2 -> inputlist.[18]
+3 -> inputlist.[19]
+6 -> inputlist.[20]
+1 -> inputlist.[21]
+3 -> inputlist.[22]
+6 -> inputlist.[23]
+2 -> inputlist.[24]
+0 -> inputlist.[25]
+0 -> inputlist.[26]
+0 -> inputlist.[27]
+0 -> inputlist.[28]
+0 -> inputlist.[29]
+0 -> inputlist.[30]
+
+increment num_qubit to 6
     qubit -> circuit.[num_qubit]
 next
-
 # h, s, cnot, x, y, z
 # 0, 1, 2, 3, 4, 5
-
-increment incrmt to total
-    incrmt mod 3 == 1 -> storage
+increment incrmt to 30
+    incrmt mod 3 -> temp
+    (temp == 1) -> storage
     if storage
-        cur_qubit = circuit.[inputlist.[incrmt+2]]
-        control_qubit = circuit.[inputlist.[incrmt+1]]
+        incrmt + 2 ->  incrmt_plus_2
+        incrmt + 1 ->  incrmt_plus_1
+        
+        inputlist.[incrmt_plus_2] -> inputlist_idx2
+        inputlist.[incrmt_plus_1] -> inputlist_idx1
+        
+        circuit.[inputlist_idx2] -> cur_qubit
+        circuit.[inputlist_idx1] -> control_qubit
         inputlist.[incrmt] == 0 -> temp0
         inputlist.[incrmt] == 1 -> temp1
         inputlist.[incrmt] == 2 -> temp2
@@ -26,7 +68,7 @@ increment incrmt to total
             s[cur_qubit]
         end
         if temp2
-            cnot[circuit.[control_qubit], circuit.[cur_qubit]]
+            cnot[control_qubit, cur_qubit]
         end
         if temp3
             x[cur_qubit]
@@ -39,7 +81,6 @@ increment incrmt to total
         end
     end
 next
-
 increment num_qubit to max_num_qubits
     measure[circuit.[num_qubit]] -> readout.[num_qubit]
 next

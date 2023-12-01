@@ -17,7 +17,6 @@ random_theta = np.ones(A.shape[0])
 
 # return error vector
 lambda_vector = Amatrixsolve(A, random_theta)
-print("LAMBDA VECTOR: ", lambda_vector)
 error_vector = error(lambda_vector)
 
 print("ERROR VECTOR: ", error_vector)
