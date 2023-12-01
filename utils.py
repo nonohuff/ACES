@@ -30,6 +30,10 @@ def SMatrix(): return SGate().to_matrix()
 def TMatrix(): return TGate().to_matrix()
 
 
+# results =
+# def plotResults(results):
+
+
 # def CXMatrix(): return CXGate().to_matrix()
 
 
