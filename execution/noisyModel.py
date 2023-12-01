@@ -1,10 +1,3 @@
-from qiskit import QuantumCircuit, Aer, transpile, assemble
-from qiskit.visualization import plot_histogram
-from qiskit_aer import AerSimulator
-from qiskit.tools.visualization import plot_histogram
-# Import from Qiskit Aer noise module
-from qiskit_aer.noise import (NoiseModel, QuantumError, ReadoutError,
-                              pauli_error, depolarizing_error, thermal_relaxation_error)
 from numpy import random
 
 

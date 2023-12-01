@@ -31,38 +31,5 @@ print(qiskitCircuitNoisy)
 qiskitCircuitTwirl = GTwirling(qiskitCircuit)
 print(qiskitCircuitTwirl)
 
-# Measure all qubits
-# qiskitCircuit.measure_all()
-# qiskitCircuitTwirl.measure_all()
-
-
-# Simulate the circuit using noisy Aer backend
-
-
-# Define the instructions for Pauli error
-# Instructions to apply the single qubit Pauli gate error
-# singleGateErrorInstruction = ['noisyI', 'noisyX', 'noisyY', 'noisyZ', 'noisyH', 'noisyS']
-singleGateErrorInstruction = ['u1', 'u2', 'u3']
-# Instructions to apply the double qubit gate error, i.e. tensor of two single qubit Pauli gate error
-# doubleGateErrorInstruction = ['noisyCX']
-doubleGateErrorInstruction = ['noisyCX']
-
-
-
-
-# # Run the circuit with noisy backend
-# result = noisySimulator(qiskitCircuitTwirl, px=px, py=py, pz=pz,
-#                         singleGateErrorInstruction=singleGateErrorInstruction,
-#                         doubleGateErrorInstruction=doubleGateErrorInstruction, shots=shots)
-# print(result.get_counts(0))
-# # Run the circuit with noisy backend
-# result = noisySimulator(qiskitCircuit, px=px, py=py, pz=pz,
-#                         singleGateErrorInstruction=singleGateErrorInstruction,
-#                         doubleGateErrorInstruction=doubleGateErrorInstruction, shots=shots)
-# print(result.get_counts(0))
-
-
-
-
 
 
